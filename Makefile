@@ -4,10 +4,10 @@ help: ## Show this help
 	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / {printf "  \033[36m%-15s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 
 init: ## Init services and install dependencies
-	@make build
 	@make up
-	@make migrate
+	@make composer
 	@make npm
+	@make npm-build
 
 build: ## Build containers
 	docker-compose build
@@ -23,6 +23,9 @@ test: ## Run tests
 
 phpcs: ## Run phpcs
 	docker-compose exec app php vendor/bin/phpcs --standard=phpcs.xml --extensions=php . -p
+
+composer: ## Install php dependencies
+	docker-compose exec app composer -vn install
 
 eslint: ## Run eslint
 	docker run --rm -v $(PWD):/app -v ~/.ssh:/root/.ssh -w /app node:lts npm run-script eslint
