@@ -1,10 +1,23 @@
 /node_modules
 /vendor
-.env
 .env.backup
-.phpunit.result.cache
 npm-debug.log
 yarn-error.log
 docker-compose.override.yml
 .DS_Store
 /.idea
+
+###> symfony/framework-bundle ###
+/.env.local
+/.env.local.php
+/.env.*.local
+/config/secrets/prod/prod.decrypt.private.php
+/public/bundles/
+/var/
+###< symfony/framework-bundle ###
+
+###> symfony/phpunit-bridge ###
+.phpunit
+.phpunit.result.cache
+/phpunit.xml
+###< symfony/phpunit-bridge ###
