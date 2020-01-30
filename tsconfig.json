@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "allowJs": true,
+    "skipLibCheck": true,
+    "noImplicitAny": true,
+    "module": "es6",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "jsx": "preserve",
+    "resolveJsonModule": true
+  },
+  "exclude": [
+    "node_modules",
+    "vendor",
+    "**/*.spec.ts"
+  ]
+}
