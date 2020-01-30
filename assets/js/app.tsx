@@ -3,18 +3,27 @@ import * as ReactDOM from 'react-dom'
 import { AppProvider, Card, Layout, Page } from '@shopify/polaris'
 import enTranslations from '@shopify/polaris/locales/en.json'
 import { Provider as ReduxProvider } from 'react-redux'
-import '@shopify/polaris/styles.css'
-
 import store from './store/index'
+import { ConversionForm } from './components/ConversionForm'
+import { ConversionHistory } from './components/ConversionHistory'
+
+import '@shopify/polaris/styles.css'
 
 ReactDOM.render(
     <div>
         <ReduxProvider store={store}>
             <AppProvider i18n={enTranslations}>
                 <Page>
-                    <Card title="Currency Conversion">
-
-                    </Card>
+                    <Layout>
+                        <Layout.Section>
+                            <Card title="Currency Conversion" sectioned>
+                                <ConversionForm/>
+                            </Card>
+                            <Card title="Conversion History" sectioned>
+                                <ConversionHistory/>
+                            </Card>
+                        </Layout.Section>
+                    </Layout>
                 </Page>
             </AppProvider>
         </ReduxProvider>
