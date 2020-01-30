@@ -24,6 +24,18 @@ test: ## Run tests
 phpcs: ## Run phpcs
 	docker-compose exec app php vendor/bin/phpcs --standard=phpcs.xml --extensions=php . -p
 
+eslint: ## Run eslint
+	docker run --rm -v $(PWD):/app -v ~/.ssh:/root/.ssh -w /app node:lts npm run-script eslint
+
+npm: ## Install npm dependencies
+	docker run --rm -v $(PWD):/app -v ~/.ssh:/root/.ssh -w /app node:lts npm i
+
+npm-watch: ## Watch npm watch (dev)
+	docker run --rm -v $(PWD):/app -v ~/.ssh:/root/.ssh -w /app node:lts npm run-script watch
+
+npm-build: ## Watch npm build
+	docker run --rm -v $(PWD):/app -v ~/.ssh:/root/.ssh -w /app node:lts npm run-script build
+
 prune: ## Rune system from docker-trash
 	@docker system prune -f --volumes
 
