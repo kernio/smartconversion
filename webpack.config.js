@@ -23,7 +23,7 @@ Encore
      * Each entry will result in one JavaScript file (e.g. app.js)
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
-    .addEntry('app', './assets/js/app.ts')
+    .addEntry('app', './assets/js/app.tsx')
     .enableTypeScriptLoader()
     .enableSassLoader()
 
@@ -55,23 +55,10 @@ Encore
         config.useBuiltIns = 'usage';
         config.corejs = 3;
     })
+    .enableReactPreset()
+    .disableSingleRuntimeChunk()
+    .splitEntryChunks()
 
-    // enables Sass/SCSS support
-    //.enableSassLoader()
-
-    // uncomment if you use TypeScript
-    //.enableTypeScriptLoader()
-
-    // uncomment to get integrity="..." attributes on your script & link tags
-    // requires WebpackEncoreBundle 1.4 or higher
-    //.enableIntegrityHashes(Encore.isProduction())
-
-    // uncomment if you're having problems with a jQuery plugin
-    //.autoProvidejQuery()
-
-    // uncomment if you use API Platform Admin (composer req api-admin)
-    //.enableReactPreset()
-    //.addEntry('admin', './assets/js/admin.js')
 ;
 
 module.exports = Encore.getWebpackConfig();
