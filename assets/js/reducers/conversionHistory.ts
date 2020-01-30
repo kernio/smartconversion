@@ -9,18 +9,19 @@ const initialState: ConversionHistory = {
 export default function (
     state: ConversionHistory = initialState, action: ConversionHistoryActionTypes): ConversionHistory {
     if (action.type === PUSH_CONVERTED_HISTORY) {
-        const rows = state.rows
-        rows.unshift([
+        const historyElement = [
             action.sourcePrice.currency,
             action.sourcePrice.amount,
             action.outputPrice.currency,
             action.outputPrice.amount
-        ])
-        console.debug(rows)
-        while (rows.length > MAX_HISTORY_SIZE) { rows.pop() }
+        ]
+        const items = [...[historyElement], ...state.rows]
+
+        while (items.length > MAX_HISTORY_SIZE) { items.pop() }
+
         return {
             ...state,
-            rows: rows
+            rows: items
         }
     } else { return state }
 }
